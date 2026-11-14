@@ -186,6 +186,24 @@
   .card p{margin:0;font-size:12.8px;line-height:1.7;color:var(--muted)}
   .card .tag{position:absolute;top:22px;right:20px;font-size:9.5px;letter-spacing:.6px;color:var(--muted-2);border:1px solid var(--line);padding:2px 7px;border-radius:99px}
 
+  /* real screens */
+  .screens{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:start}
+  .shot{margin:0;position:relative}
+  .phone-shell{position:relative;padding:10px;border-radius:34px;background:linear-gradient(160deg,#2b3444,#0a0e15 62%);border:1px solid rgba(255,255,255,.16);box-shadow:0 28px 70px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.14);transition:transform .3s,box-shadow .3s}
+  .phone-shell::after{content:"";position:absolute;inset:3px;border-radius:31px;border:1px solid rgba(255,255,255,.05);pointer-events:none}
+  .phone-shell img{width:100%;height:auto;border-radius:25px;display:block;background:#05070a}
+  .shot:hover .phone-shell{transform:translateY(-6px);box-shadow:0 38px 90px rgba(0,0,0,.65),0 0 0 1px rgba(77,226,197,.2)}
+  .shot figcaption{padding:18px 6px 0;text-align:center}
+  .shot figcaption b{display:block;font-size:15px;font-weight:650;letter-spacing:.2px}
+  .shot figcaption span{display:block;margin-top:5px;font-size:12px;color:var(--muted);line-height:1.6}
+  .car-showcase{margin-top:28px;border:1px solid var(--line);border-radius:24px;padding:14px;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02));box-shadow:var(--shadow);display:grid;grid-template-columns:1.55fr .45fr;gap:26px;align-items:center}
+  .car-frame{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#000}
+  .car-frame img{width:100%;height:auto;display:block}
+  .car-caption{padding:8px 12px 8px 0}
+  .car-caption b{display:block;font-size:18px;font-weight:680;margin-bottom:9px;letter-spacing:-.2px}
+  .car-caption span{display:block;font-size:12.5px;color:var(--muted);line-height:1.8}
+  .car-caption .tag2{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:10.5px;color:var(--mint);border:1px solid rgba(77,226,197,.25);background:rgba(77,226,197,.06);padding:4px 9px;border-radius:99px}
+
   /* split sections */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
   .split.rev .copy{order:2}
@@ -373,6 +391,10 @@
     .sec{padding:78px 0}
     .perm-grid{grid-template-columns:1fr}
     .lock-visual{grid-template-columns:1fr 1fr}
+    .screens{grid-template-columns:1fr 1fr}
+    .screens .shot:last-child{grid-column:span 2;width:calc(50% - 13px);justify-self:center}
+    .car-showcase{grid-template-columns:1fr}
+    .car-caption{padding:0 2px 8px}
   }
   @media (max-width:620px){
     .wrap{width:calc(100% - 34px)}
@@ -387,6 +409,10 @@
     .hero-meta{font-size:11.5px;gap:6px 14px}
     .hero-cta .btn{flex:1;justify-content:center}
     .features{grid-template-columns:1fr}
+    .screens{grid-template-columns:1fr;gap:30px}
+    .screens .shot:last-child{grid-column:auto;width:100%}
+    .phone-shell{padding:8px;border-radius:30px}
+    .phone-shell img{border-radius:22px}
     .stage{transform:scale(.68);min-height:370px;margin-bottom:-110px;justify-content:flex-start;padding-left:2px}
     .device-car{top:10px}
     .strip-inner{justify-content:flex-start;gap:12px 22px}
@@ -424,6 +450,7 @@
     </a>
     <nav class="nav-links" aria-label="主导航">
       <a href="#features">功能</a>
+      <a href="#screens">界面</a>
       <a href="#music">音乐</a>
       <a href="#navigation">导航</a>
       <a href="#security">安全</a>
@@ -439,6 +466,7 @@
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#features">功能</a>
+    <a href="#screens">真实界面</a>
     <a href="#music">音乐同步</a>
     <a href="#navigation">导航与位置</a>
     <a href="#security">锁屏与安全</a>
@@ -624,6 +652,48 @@
         <p>4 位密码保护指定界面，关屏自动锁定。核心连接发生在局域网内。</p>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- real screens -->
+<section class="sec" id="screens" style="padding-top:24px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">REAL SCREENS</div>
+      <h2>应用内真实界面</h2>
+      <p>以下截图取自应用实际运行画面，未做界面重绘。深色界面、绿色强调色与车机横屏布局，都与安装后看到的一致。</p>
+    </div>
+    <div class="screens">
+      <figure class="shot reveal">
+        <div class="phone-shell">
+          <img src="assets/screens/link-home.webp" width="720" height="1164" loading="lazy" decoding="async" alt="手车互联应用互联中心界面，可选择手机端或车机端，并显示连接状态与本机 IP">
+        </div>
+        <figcaption><b>互联中心</b><span>选择手机端 / 车机端，扫码或自动发现</span></figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <div class="phone-shell">
+          <img src="assets/screens/quick-entry.webp" width="720" height="1164" loading="lazy" decoding="async" alt="锁屏快捷入口面板，包含连接、手机热点、手电筒、企业微信消息与全部界面入口">
+        </div>
+        <figcaption><b>锁屏快捷入口</b><span>不解锁也能连接、开热点、发消息</span></figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <div class="phone-shell">
+          <img src="assets/screens/link-settings.webp" width="720" height="1164" loading="lazy" decoding="async" alt="互联设置界面，包含设备名称、端口、自动重连、高德 Key 与音乐音量同步开关">
+        </div>
+        <figcaption><b>互联设置</b><span>端口、自动重连、音乐与音量同步</span></figcaption>
+      </figure>
+    </div>
+    <div class="car-showcase reveal">
+      <div class="car-frame">
+        <img src="assets/screens/car-home.webp" width="1280" height="720" loading="lazy" decoding="async" alt="车机端横屏桌面，包含播放控制、地图导航、互联中心、消息提醒与退出按钮">
+      </div>
+      <div class="car-caption">
+        <b>车机端 · 横屏桌面</b>
+        <span>大按钮布局，适合驾驶中快速点按。音乐控制、导航、消息提醒与互联入口集中在一块屏幕上，也可随时退回手机主界面。</span>
+        <span class="tag2">车机端界面</span>
+      </div>
+    </div>
+    <p class="note reveal" style="margin-top:22px">截图为应用实际运行画面，不同机型、分辨率与权限状态下界面可能略有差异。</p>
   </div>
 </section>
 
