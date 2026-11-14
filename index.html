@@ -5,11 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>手车互联 · 锁屏播放器 — 手机与车机，Wi-Fi 直连</title>
 <meta name="description" content="手车互联 · 锁屏播放器：同一个 App 让手机与车机 Wi-Fi 直连。音乐同步/独立播放、高德地图导航、双向位置共享、来电短信提醒、锁屏播放器与应用锁。Android 5.1+，仅 400 KB。">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="author" content="zltzlt127">
+<meta name="keywords" content="手车互联,锁屏播放器,手机车机互联,车载音乐,高德导航,双向位置,APK下载,Android">
+<link rel="canonical" href="https://zltzlt127.github.io/">
 <meta name="theme-color" content="#07090f">
 <script>document.documentElement.classList.add('js');</script>
 <meta property="og:title" content="手车互联 · 锁屏播放器">
 <meta property="og:description" content="同一个 App · Wi-Fi 直连 · 无需蓝牙。音乐同步、车机导航、双向位置、锁屏播放器。">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://zltzlt127.github.io/">
+<meta property="og:site_name" content="手车互联 · 锁屏播放器">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zltzlt127.github.io/assets/screens/car-home.webp">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="手车互联 · 锁屏播放器">
+<meta name="twitter:description" content="同一个 App · Wi-Fi 直连 · 无需蓝牙。音乐同步、车机导航、双向位置、锁屏播放器。">
+<meta name="twitter:image" content="https://zltzlt127.github.io/assets/screens/car-home.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "手车互联 · 锁屏播放器",
+  "alternateName": "手车互联",
+  "url": "https://zltzlt127.github.io/",
+  "description": "让手机与车机通过 Wi-Fi 直连的 Android 应用，支持音乐同步与独立播放、高德地图导航、双向位置共享、来电短信提醒、锁屏播放器与应用锁。",
+  "applicationCategory": "MultimediaApplication",
+  "applicationSubCategory": "车载互联",
+  "operatingSystem": "Android 5.1+",
+  "softwareVersion": "1.0",
+  "fileSize": "410208B",
+  "inLanguage": "zh-CN",
+  "datePublished": "2026-11-12",
+  "dateModified": "2026-11-14",
+  "downloadUrl": "https://zltzlt127.github.io/download/shouche-hulian-v1.0.apk",
+  "installUrl": "https://zltzlt127.github.io/download/shouche-hulian-v1.0.apk",
+  "screenshot": [
+    "https://zltzlt127.github.io/assets/screens/link-home.webp",
+    "https://zltzlt127.github.io/assets/screens/quick-entry.webp",
+    "https://zltzlt127.github.io/assets/screens/link-settings.webp",
+    "https://zltzlt127.github.io/assets/screens/car-home.webp"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "CNY"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "zltzlt127",
+    "url": "https://github.com/zltzlt127"
+  }
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b1220'/%3E%3Crect x='17' y='9' width='17' height='30' rx='5' fill='none' stroke='%234de2c5' stroke-width='3'/%3E%3Cpath d='M42 21h5a6 6 0 0 1 6 6v12a6 6 0 0 1-6 6h-9' fill='none' stroke='%236aa7ff' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='25.5' cy='34' r='1.8' fill='%234de2c5'/%3E%3C/svg%3E">
 <style>
   :root{
@@ -1054,7 +1104,10 @@
   });
 
   var items=document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
+  var isBot=/googlebot|bingbot|baiduspider|yandexbot|duckduckbot|slurp|bot|crawl|spider/i.test(navigator.userAgent);
+  if(isBot){
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
