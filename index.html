@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>手车互联 · 锁屏播放器 — 手机与车机，Wi-Fi 直连</title>
 <meta name="description" content="手车互联 · 锁屏播放器：同一个 App 让手机与车机 Wi-Fi 直连。音乐同步/独立播放、高德地图导航、双向位置共享、来电短信提醒、锁屏播放器与应用锁。Android 5.1+，仅 400 KB。">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
@@ -419,6 +419,9 @@
   .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1)}
   .js .reveal.in{opacity:1;transform:none}
 
+  /* mobile-only elements */
+  .hero-shot,.mobile-dl,.swipe-hint{display:none}
+
   @media (max-width:1080px){
     .features{grid-template-columns:repeat(2,1fr)}
     .stage{min-height:430px;transform:scale(.92)}
@@ -447,34 +450,148 @@
     .car-caption{padding:0 2px 8px}
   }
   @media (max-width:620px){
-    .wrap{width:calc(100% - 34px)}
-    .nav-inner{gap:10px}
+    html{scroll-padding-top:76px}
+    body{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+    .wrap{width:calc(100% - 32px)}
+    .nav{padding-top:env(safe-area-inset-top)}
+    .nav-inner{height:64px;gap:10px}
     .nav-actions .btn-ghost{display:none}
-    .brand{font-size:15px;gap:9px}
-    .brand .logo{width:32px;height:32px}
-    .brand small{font-size:8.5px;letter-spacing:1.1px}
-    .nav-actions .btn-sm{padding:9px 15px}
-    .stage .ft3{display:none}
-    h1{font-size:38px;letter-spacing:-1px}
-    .hero-meta{font-size:11.5px;gap:6px 14px}
-    .hero-cta .btn{flex:1;justify-content:center}
-    .features{grid-template-columns:1fr}
-    .screens{grid-template-columns:1fr;gap:30px}
-    .screens .shot:last-child{grid-column:auto;width:100%}
-    .phone-shell{padding:8px;border-radius:30px}
-    .phone-shell img{border-radius:22px}
-    .stage{transform:scale(.68);min-height:370px;margin-bottom:-110px;justify-content:flex-start;padding-left:2px}
-    .device-car{top:10px}
-    .strip-inner{justify-content:flex-start;gap:12px 22px}
-    .strip-item b{font-size:16px}
-    .download-card{padding:26px 20px;border-radius:22px}
-    .dl-app h3{font-size:19px}
-    .btn-dl{width:100%}
-    .install{grid-template-columns:1fr}
+    .brand{font-size:14.5px;gap:9px}
+    .brand .logo{width:31px;height:31px}
+    .brand small{font-size:8px;letter-spacing:1px}
+    .nav-actions .btn-sm{padding:9px 14px;font-size:13px}
+    .nav-burger{width:40px;height:40px}
+
+    /* hero */
+    .hero{padding:34px 0 22px}
+    .hero-grid{gap:18px}
+    .badge{font-size:11.5px;padding:6px 12px 6px 7px;margin-bottom:18px}
+    h1{font-size:clamp(31px,9vw,38px);letter-spacing:-1.1px;line-height:1.16;margin-bottom:16px}
+    .hero p.lead{font-size:15px;line-height:1.8;margin-bottom:24px}
+    .hero-cta{gap:10px;margin-bottom:22px}
+    .hero-cta .btn{flex:1 1 100%;justify-content:center;padding:14px 18px}
+    .hero-meta{font-size:11.5px;gap:7px 14px}
+    .stage{display:none}
+
+    .hero-shot{display:flex;position:relative;align-items:center;justify-content:center;min-height:400px;padding:12px 0 4px}
+    .hero-shot-glow{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(77,226,197,.2),rgba(106,167,255,.08) 48%,transparent 70%);filter:blur(10px)}
+    .hero-phone{position:relative;z-index:2;width:212px;padding:8px;border-radius:30px;transform:rotate(-2.5deg);animation:heroFloat 7s ease-in-out infinite}
+    .hero-phone::after{border-radius:27px}
+    .hero-phone img{border-radius:23px}
+    @keyframes heroFloat{0%,100%{transform:rotate(-2.5deg) translateY(0)}50%{transform:rotate(-2.5deg) translateY(-9px)}}
+    .hero-pill{position:absolute;z-index:3;display:flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;background:rgba(9,14,21,.88);border:1px solid var(--line-strong);backdrop-filter:blur(14px);font-size:10.5px;color:#dbe6f2;box-shadow:0 12px 30px rgba(0,0,0,.45);white-space:nowrap}
+    .hero-pill span{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 3px rgba(77,226,197,.16)}
+    .hp1{left:0;top:74px;animation:float2 6.4s ease-in-out infinite}
+    .hp2{right:0;bottom:84px;animation:float2 7.6s ease-in-out infinite .5s}
+    .hp2 span{background:var(--blue);box-shadow:0 0 0 3px rgba(106,167,255,.16)}
+
+    /* strip */
+    .strip-inner{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px;padding:20px 0;justify-content:initial}
+    .strip-item{gap:7px;font-size:11.5px}
+    .strip-item b{font-size:17px}
+    .strip-item b em{font-size:10px}
+    .strip-item:last-child{grid-column:1/-1;justify-content:center}
+
+    /* sections */
+    .sec{padding:58px 0}
+    .sec-head{max-width:none;margin-bottom:26px}
+    .eyebrow{font-size:10.5px;letter-spacing:2px;margin-bottom:10px}
+    h2{font-size:26px;letter-spacing:-.5px;margin-bottom:12px}
+    .sec-head p{font-size:13.5px;line-height:1.8}
+    .copy h3{font-size:23px}
+    .copy>p{font-size:13.5px;margin-bottom:20px}
+    .bullets{gap:12px}
+    .bullets li{font-size:13px}
+    .note{font-size:11px;margin-top:18px}
+    .split{gap:26px}
+    .visual-panel{padding:15px;border-radius:18px}
+    .map-card{height:210px}
+
+    /* features: horizontal snap */
+    .features{
+      display:flex;grid-template-columns:none;gap:12px;
+      overflow-x:auto;overflow-y:hidden;
+      scroll-snap-type:x mandatory;scroll-padding-inline:16px;
+      -webkit-overflow-scrolling:touch;scrollbar-width:none;
+      margin-inline:-16px;padding:2px 16px 8px;
+    }
+    .features::-webkit-scrollbar{display:none}
+    .features .card{flex:0 0 84%;scroll-snap-align:start;padding:20px 18px 18px;opacity:1;transform:none;transition:none}
+    .features .card .tag{top:19px;right:16px}
+    .features .card .ic{width:38px;height:38px;margin-bottom:14px}
+    .features .card h3{font-size:15px}
+    .features .card p{font-size:12.5px}
+    .swipe-hint{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px;font-size:10.5px;letter-spacing:.3px;color:var(--muted-2)}
+
+    /* real screens: horizontal snap */
+    .screens{
+      display:flex;grid-template-columns:none;gap:14px;align-items:flex-start;
+      overflow-x:auto;overflow-y:hidden;
+      scroll-snap-type:x mandatory;scroll-padding-inline:16px;
+      -webkit-overflow-scrolling:touch;scrollbar-width:none;
+      margin-inline:-16px;padding:2px 16px 4px;
+    }
+    .screens::-webkit-scrollbar{display:none}
+    .screens .shot{flex:0 0 80%;scroll-snap-align:start;opacity:1;transform:none;transition:none}
+    .screens .shot:last-child{grid-column:auto;width:auto;justify-self:auto}
+    .phone-shell{padding:8px;border-radius:28px}
+    .phone-shell::after{border-radius:25px}
+    .phone-shell img{border-radius:21px}
+    .shot figcaption{padding-top:12px}
+    .shot figcaption b{font-size:13.5px}
+    .shot figcaption span{font-size:11px}
+    .car-showcase{grid-template-columns:1fr;gap:14px;padding:10px;border-radius:18px;margin-top:24px}
+    .car-frame{border-radius:11px}
+    .car-caption{padding:0 4px 6px}
+    .car-caption b{font-size:15.5px;margin-bottom:6px}
+    .car-caption span{font-size:11.5px;line-height:1.7}
+    .car-caption .tag2{margin-top:10px}
+
+    /* download */
+    .download-sec{padding:8px 0 40px}
+    .download-card{padding:24px 18px;border-radius:22px}
+    .dl-app{gap:13px;margin-bottom:16px}
+    .app-icon{width:56px;height:56px;border-radius:15px}
+    .dl-app h3{font-size:17px;line-height:1.35}
+    .dl-app p{font-size:10.5px}
+    .dl-lead{font-size:12.5px;margin-bottom:20px}
+    .dl-btns{flex-direction:column;align-items:stretch}
+    .btn-dl{width:100%;padding:14px 20px}
+    .dl-btns .btn-ghost{width:100%}
+    .file-panel{padding:16px;border-radius:14px}
+    .file-row{font-size:11.5px;padding:8px 0}
+    .file-row b{font-size:11px}
+    .hash-box{padding:9px 10px;flex-wrap:wrap}
+    .hash-box code{font-size:9px;flex:1 1 100%}
+    .install{grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+    .inst{padding:14px;border-radius:12px}
+    .inst b{font-size:12px}
+    .inst p{font-size:10.8px}
+    .perm-grid{grid-template-columns:1fr}
+    .acc summary{padding:17px 2px;font-size:13.5px}
+    .acc .body{font-size:12.5px;padding-bottom:20px}
     .lock-visual{grid-template-columns:1fr;justify-items:center}
     .chips{width:100%}
-    .foot{flex-direction:column}
-    .copyright{flex-direction:column;gap:6px}
+
+    footer{padding:32px 0 24px}
+    .foot{flex-direction:column;gap:20px}
+    .foot-links{gap:16px 22px}
+    .copyright{flex-direction:column;gap:6px;margin-top:4px;padding-top:16px}
+
+    /* fixed bottom download bar */
+    .mobile-dl{
+      display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;align-items:center;gap:12px;
+      padding:9px 16px calc(9px + env(safe-area-inset-bottom));
+      background:rgba(7,10,16,.92);border-top:1px solid var(--line-strong);
+      backdrop-filter:blur(20px) saturate(1.4);
+      transform:translateY(120%);transition:transform .3s cubic-bezier(.3,.7,.3,1);
+    }
+    .mobile-dl.show{transform:translateY(0)}
+    .mdl-app{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+    .mdl-icon{width:38px;height:38px;border-radius:10px;background:linear-gradient(150deg,#0f2b2a,#0a1520);border:1px solid rgba(77,226,197,.3);display:grid;place-items:center;flex:none}
+    .mdl-app b{display:block;font-size:12.5px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .mdl-app span{display:block;font-size:10px;color:var(--muted-2)}
+    .mdl-btn{flex:none;padding:10px 20px;font-size:13px;border-radius:11px}
   }
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
@@ -630,6 +747,15 @@
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
       </span>关屏自动锁定</div>
     </div>
+
+    <div class="hero-shot" aria-hidden="true">
+      <div class="hero-shot-glow"></div>
+      <div class="phone-shell hero-phone">
+        <img src="assets/screens/link-home.webp" width="720" height="1164" decoding="async" alt="">
+      </div>
+      <div class="hero-pill hp1"><span></span>Wi-Fi 直连</div>
+      <div class="hero-pill hp2"><span></span>音乐 · 导航 · 位置</div>
+    </div>
   </div>
 </section>
 
@@ -702,6 +828,7 @@
         <p>4 位密码保护指定界面，关屏自动锁定。核心连接发生在局域网内。</p>
       </article>
     </div>
+    <div class="swipe-hint">← 左右滑动，查看全部 8 项功能 →</div>
   </div>
 </section>
 
@@ -733,6 +860,7 @@
         <figcaption><b>互联设置</b><span>端口、自动重连、音乐与音量同步</span></figcaption>
       </figure>
     </div>
+    <div class="swipe-hint">← 左右滑动，查看更多界面 →</div>
     <div class="car-showcase reveal">
       <div class="car-frame">
         <img src="assets/screens/car-home.webp" width="1280" height="720" loading="lazy" decoding="async" alt="车机端横屏桌面，包含播放控制、地图导航、互联中心、消息提醒与退出按钮">
@@ -1088,6 +1216,24 @@
   </div>
 </footer>
 
+<!-- mobile fixed download bar -->
+<div class="mobile-dl" id="mobileDl">
+  <div class="mdl-app">
+    <div class="mdl-icon">
+      <svg width="22" height="22" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <rect x="14" y="8" width="18" height="32" rx="5" stroke="#4de2c5" stroke-width="3"/>
+        <path d="M40 20h5a6 6 0 0 1 6 6v13a6 6 0 0 1-6 6h-8" stroke="#6aa7ff" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="23" cy="34" r="2" fill="#4de2c5"/>
+      </svg>
+    </div>
+    <div>
+      <b>手车互联 · 锁屏播放器</b>
+      <span>v1.0 · Android 5.1+ · 400 KB</span>
+    </div>
+  </div>
+  <a class="btn btn-primary mdl-btn" href="download/shouche-hulian-v1.0.apk" download>下载</a>
+</div>
+
 <script>
 (function(){
   var nav=document.getElementById('nav');
@@ -1137,6 +1283,20 @@
         document.body.removeChild(ta);
       }
     });
+  }
+
+  var dlBar=document.getElementById('mobileDl'), dlSec=document.getElementById('download');
+  if(dlBar && dlSec){
+    var barShown=false;
+    var updateBar=function(){
+      var r=dlSec.getBoundingClientRect();
+      var inDownload=r.top<window.innerHeight*.9 && r.bottom>0;
+      var show=window.scrollY>520 && !inDownload;
+      if(show!==barShown){ barShown=show; dlBar.classList.toggle('show', show); }
+    };
+    updateBar();
+    window.addEventListener('scroll', updateBar, {passive:true});
+    window.addEventListener('resize', updateBar);
   }
 
   document.getElementById('year').textContent=new Date().getFullYear();
