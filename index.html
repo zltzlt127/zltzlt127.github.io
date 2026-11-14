@@ -10,7 +10,21 @@
 <meta name="keywords" content="手车互联,锁屏播放器,手机车机互联,车载音乐,高德导航,双向位置,APK下载,Android">
 <link rel="canonical" href="https://zltzlt127.github.io/">
 <meta name="theme-color" content="#07090f">
-<script>document.documentElement.classList.add('js');</script>
+<script>
+(function(){
+  var doc=document.documentElement;
+  doc.classList.add('js');
+  /* 跟随浏览器「切换电脑版」：手机设备 + 桌面 UA 时按桌面版渲染 */
+  var ua=navigator.userAgent||'';
+  var mobile=/Android|iPhone|iPod|iPad|Mobile|Windows Phone|HarmonyOS/i.test(ua);
+  var touch=(navigator.maxTouchPoints||0)>0 || ('ontouchstart' in window);
+  var smallScreen=Math.min(screen.width||9999,screen.height||9999)<=600;
+  if(touch && smallScreen && !mobile){
+    var v=document.querySelector('meta[name="viewport"]');
+    if(v) v.setAttribute('content','width=1024');
+  }
+})();
+</script>
 <meta property="og:title" content="手车互联 · 锁屏播放器">
 <meta property="og:description" content="同一个 App · Wi-Fi 直连 · 无需蓝牙。音乐同步、车机导航、双向位置、锁屏播放器。">
 <meta property="og:type" content="website">
